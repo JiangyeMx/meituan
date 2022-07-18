@@ -1,13 +1,13 @@
 <template>
   <div class="layout-default">
     <el-container>
-      <el-header>
-        <!-- <Header /> -->
+      <el-header heigh="">
+        <Header />
       </el-header>
       <el-main>
         <router-view />
       </el-main>
-      <el-footer>
+      <el-footer heigh="">
         <Footer />
       </el-footer>
     </el-container>
@@ -26,5 +26,5 @@ export default {
 </script>
 
 <style >
-  @import "@/assets/css/public/layout.scss";
+  @import "~@/assets/css/public/layout.scss";
 </style>

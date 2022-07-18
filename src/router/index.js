@@ -1,35 +1,38 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'defaultPage',
-    redirect: '/index',
+    path: "/",
+    name: "defaultPage",
+    redirect: "/index",
     component: () => import("@/layouts/defaultPage.vue"),
     children: [
       {
-        path: '/index',
-        name: 'index',
-        component: () => import("@/views/index.vue")
-      }
+        path: "/index",
+        name: "index",
+        component: () => import("@/views/main.vue"),
+      },
+      {
+        path: "/city",
+        name: "city",
+        component: () => import("@/views/city.vue"),
+      },
     ],
   },
   {
-    path: '/blank',
-    name: 'blankPage',
-    component: () => import("@/layouts/blankPage.vue")
+    path: "/blank",
+    name: "blankPage",
+    component: () => import("@/layouts/blankPage.vue"),
   },
-
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
