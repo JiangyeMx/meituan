@@ -20,6 +20,11 @@ const routes = [
         name: "city",
         component: () => import("@/views/city.vue"),
       },
+      {
+        path: "/product",
+        name: "product",
+        component: () => import("@/views/product.vue"),
+      },
     ],
   },
   {
