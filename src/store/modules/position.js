@@ -1,7 +1,6 @@
 export default {
   state: {
-    position: {
-    },
+    position: {},
   },
   mutations: {
     setPosition(state, position) {

@@ -2,7 +2,7 @@
   <div class="layout-default">
     <el-container>
       <el-header heigh="">
-        <!-- <Header /> -->
+        <Header />
       </el-header>
       <el-main>
         <router-view />

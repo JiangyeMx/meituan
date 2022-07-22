@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import api from "@/api/index.js";
 export default {
   data() {
     return {
@@ -63,13 +64,13 @@ export default {
       isFocus: false,
     };
   },
-  computed:{
-    isHotPlace(){
+  computed: {
+    isHotPlace() {
       return !this.searchWord && this.isFocus;
     },
-    isSearchList(){
+    isSearchList() {
       return this.searchWord && this.isFocus;
-    }
+    },
   },
   methods: {
     focusInput() {
@@ -81,6 +82,21 @@ export default {
         This.isFocus = false;
       }, 200);
     },
+    input() {
+      const val = this.searchWord;
+      api.getSearchList().then((res) => {
+        // 过滤掉搜索词中的含有对应关键字的词语
+        this.searchList = res.data.data.list.filter((item, index) => {
+          return item.indexOf(val) > -1;
+        });
+      });
+    },
+  },
+  created() {
+    api.searchHotWords().then((res) => {
+      this.hotPlaceList = res.data.data;
+      this.suggestList = res.data.data;
+    });
   },
 };
 </script>

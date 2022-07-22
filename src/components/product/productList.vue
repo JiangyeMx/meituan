@@ -21,6 +21,7 @@
 
 <script>
 import ListItem from "./listItem.vue";
+import api from "@/api/index.js";
 export default {
   components: {
     ListItem,
@@ -51,6 +52,11 @@ export default {
       ],
       productList: [],
     };
+  },
+  created() {
+    api.getProductList().then((res) => {
+      this.productList = res.data.data;
+    });
   },
 };
 </script>

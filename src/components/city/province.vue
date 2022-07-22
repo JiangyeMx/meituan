@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import api from "@/api/index.js";
 import Mselect from "./select.vue";
 export default {
   components: {
@@ -84,6 +85,14 @@ export default {
       this.$router.push({ name: "index" });
     },
     remoteMethod() {},
+  },
+  created() {
+    api.getProvinceList().then((res) => {
+      this.provinceList = res.data.data.map((item) => {
+        item.name = item.provinceName;
+        return item;
+      });
+    });
   },
 };
 </script>

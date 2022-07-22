@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import api from "@/api/index.js";
 export default {
   data() {
     return {
@@ -31,18 +32,18 @@ export default {
       cityGroup: {},
     };
   },
-  // created() {
-  //   api.getCityList().then((res) => {
-  //     var obj = {};
-  //     res.data.data.forEach((item, index) => {
-  //       if (!obj[item.firstChar.toUpperCase()]) {
-  //         obj[item.firstChar.toUpperCase()] = [];
-  //       }
-  //       obj[item.firstChar.toUpperCase()].push(item);
-  //     });
-  //     this.cityGroup = obj;
-  //   });
-  // },
+  created() {
+    api.getCityList().then((res) => {
+      var obj = {};
+      res.data.data.forEach((item, index) => {
+        if (!obj[item.firstChar.toUpperCase()]) {
+          obj[item.firstChar.toUpperCase()] = [];
+        }
+        obj[item.firstChar.toUpperCase()].push(item);
+      });
+      this.cityGroup = obj;
+    });
+  },
   methods: {
     changeCity(item) {
       console.log("item=====", item);

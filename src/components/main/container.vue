@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import api from "@/api/index.js";
 export default {
   data() {
     return {
@@ -67,6 +68,11 @@ export default {
       }
       this.kind = dom.getAttribute("data-type");
     },
+  },
+  created(){
+    api.resultsByKeywords(this.nav.title).then(res => {
+      this.resData = res.data.data;
+    });
   },
 };
 </script>
